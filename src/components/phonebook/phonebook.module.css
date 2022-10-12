@@ -104,6 +104,7 @@ p {
     width: 100px;
     border-radius: 12px;
     border: 0.2px;
+    cursor: pointer;
 }
 
 .input_tag {

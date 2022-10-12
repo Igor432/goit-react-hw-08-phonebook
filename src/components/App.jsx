@@ -11,13 +11,14 @@ import { useEffect } from 'react';
 export function App() {
 
 const dispatch = useDispatch()
+
 const isLoading = useSelector(getLoading)
 const Error = useSelector(getError)
 
+
 useEffect(() => {
 dispatch(fetchContacts())
-
-}, [dispatch])
+}, [dispatch ])
 
 
 
@@ -29,7 +30,7 @@ dispatch(fetchContacts())
         <h2 className={style.title_tag}>Contacts</h2>
 
         <Filter />
-        {isLoading && !Error && <b>Reques is Loading...</b>}
+        {isLoading && !Error && <b>Request is Loading...</b>}
         <ContactList />
   
     </div>

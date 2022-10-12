@@ -1,6 +1,6 @@
 import style from '../phonebook/phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../redux/ContactSlice';
+import { addContact } from 'components/redux/operations';
 import { useSelector } from 'react-redux';
 import { getItems } from 'components/redux/selectors';
 import Notiflix from 'notiflix';
@@ -11,7 +11,7 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const items = useSelector(getItems);
+  const contacts = useSelector(getItems);
 
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const contactList = items.contacts;
+    const contactList = contacts.items;
     const result = contactList.find(contact => contact.name === name);
     if (result) {
       return Notiflix.Notify.failure('The name already exists!');
@@ -34,14 +34,14 @@ const ContactForm = () => {
 
     const contact = {
       name: name,
-      number: number,
+      phone: number,
       id: nanoid()
     }
 setName('')
 setNumber('')
 
     dispatch(addContact(contact));
-    console.log(items);
+    console.log(contact);
   };
 
   return (
