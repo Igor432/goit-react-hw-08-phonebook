@@ -8,10 +8,11 @@ const ContactList = () => {
 
   const contactList = items.contacts;
   const filter = useSelector(getFilter);
+  console.log(typeof(contactList))
 
   const filtered = () => {
     const filterValue = filter.filter;
-    return contactList.filter(contact =>
+    return contactList.items.filter(contact =>
       contact.name.toLowerCase().includes(filterValue.toLowerCase())
     );
   };

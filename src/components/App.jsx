@@ -2,40 +2,38 @@ import Filter from './phonebook/Filter';
 import ContactList from './phonebook/ContactList';
 import ContactForm from '../components/phonebook/ContactForm';
 import style from './phonebook/phonebook.module.css';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import {persistor} from './redux/store'
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from './redux/operations';
+import { getLoading, getError } from './redux/selectors';
+import { useEffect } from 'react';
 
 
 export function App() {
 
+const dispatch = useDispatch()
+const isLoading = useSelector(getLoading)
+const Error = useSelector(getError)
+
+useEffect(() => {
+dispatch(fetchContacts())
+
+}, [dispatch])
+
+
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >  
+    <div className={style.main}>
+        <h1 className={style.title_tag}>Phonebook</h1>
+        <ContactForm />
 
-<PersistGate loading={null} persistor={persistor}>
+        <h2 className={style.title_tag}>Contacts</h2>
 
-      <h1 className={style.title_tag}>Phonebook</h1>
-      <ContactForm  />
-
-      <h2 className={style.title_tag}>Contacts</h2>
-
-      <Filter />
-      <ContactList/>
-      </PersistGate>
+        <Filter />
+        {isLoading && !Error && <b>Reques is Loading...</b>}
+        <ContactList />
+  
     </div>
   );
 }
-
 
 export default App;
