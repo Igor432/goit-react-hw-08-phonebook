@@ -1,4 +1,4 @@
-import { deleteContact } from 'components/redux/operations';
+import { deleteContact, fetchContacts } from 'components/redux/operations';
 import { useDispatch } from 'react-redux';
 import style from '../phonebook/phonebook.module.css';
 import PropTypes from 'prop-types';
@@ -8,6 +8,7 @@ const ContactElement = ({ contact, id }) => {
 
   const onDelete = () => {
     dispatch(deleteContact(id))
+    dispatch(fetchContacts())
   };
 
   return (

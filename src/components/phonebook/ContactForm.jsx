@@ -41,7 +41,6 @@ setName('')
 setNumber('')
 
     dispatch(addContact(contact));
-    console.log(contact);
   };
 
   return (
@@ -56,6 +55,7 @@ setNumber('')
           required
           className={style.name_input}
           onChange={onChange}
+          value={name}
         />
         <p class="input_tag">Number</p>
         <input
@@ -66,6 +66,8 @@ setNumber('')
           required
           className={style.number_input}
           onChange={onChange}
+          value={number}
+
         />
 
         <button type="submit" className={style.submit_button}>
