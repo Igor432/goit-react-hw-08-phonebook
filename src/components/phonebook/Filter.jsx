@@ -1,13 +1,12 @@
 import style from '../phonebook/phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { setContactFilter } from '../redux/FilterSlice';
+import { setContactFilter } from '../redux/ContactSlice';
 
 
 const Filter = () => {
   const dispatch = useDispatch();
 
   const onFilter = e => {
-   
     dispatch(setContactFilter(e.target.value));
   };
 

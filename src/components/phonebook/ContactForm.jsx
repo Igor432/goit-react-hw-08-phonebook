@@ -26,7 +26,7 @@ const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const contactList = contacts.items;
+    const contactList = contacts.contacts.items;
     const result = contactList.find(contact => contact.name === name);
     if (result) {
       return Notiflix.Notify.failure('The name already exists!');

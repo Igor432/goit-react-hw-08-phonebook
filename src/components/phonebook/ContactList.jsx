@@ -6,8 +6,7 @@ import { getItems, getFilter } from '../redux/selectors';
 const ContactList = () => {
   const contacts = useSelector(getItems);
   const filter = useSelector(getFilter);
-const contactItems = contacts.items
-
+  const contactItems = contacts.contacts.items;
 
   const filtered = () => {
     const filterValue = filter.filter;
@@ -20,9 +19,7 @@ const contactItems = contacts.items
     <div className={style.contacts}>
       <ul className={style.contacts_list}>
         {filtered().map(contact => (
-       
           <ContactElement contact={contact} key={contact.id} id={contact.id} />
-         
         ))}
       </ul>
     </div>
