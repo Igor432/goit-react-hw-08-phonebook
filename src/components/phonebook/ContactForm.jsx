@@ -1,8 +1,8 @@
 import style from '../phonebook/phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'components/redux/operations';
+import { addContact, fetchContacts } from '../redux/operations';
 import { useSelector } from 'react-redux';
-import { getItems } from 'components/redux/selectors';
+import { getContacts } from 'components/redux/selectors';
 import Notiflix from 'notiflix';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
@@ -11,7 +11,7 @@ const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(getItems);
+  const contacts = useSelector(getContacts);
 
   const dispatch = useDispatch();
 
@@ -26,21 +26,20 @@ const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const contactList = contacts.contacts.items;
-    const result = contactList.find(contact => contact.name === name);
+    const result = contacts.items.find(contact => contact.name === name);
     if (result) {
       return Notiflix.Notify.failure('The name already exists!');
     }
 
     const contact = {
       name: name,
-      phone: number,
-      id: nanoid()
-    }
-setName('')
-setNumber('')
-
+      number: number,
+      id: nanoid(),
+    };
     dispatch(addContact(contact));
+    dispatch(fetchContacts())
+    setName('');
+    setNumber('');
   };
 
   return (
@@ -67,7 +66,6 @@ setNumber('')
           className={style.number_input}
           onChange={onChange}
           value={number}
-
         />
 
         <button type="submit" className={style.submit_button}>

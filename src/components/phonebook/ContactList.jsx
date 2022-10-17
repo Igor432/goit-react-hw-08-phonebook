@@ -1,17 +1,18 @@
 import ContactElement from './ContactElements';
 import style from '../phonebook/phonebook.module.css';
 import { useSelector } from 'react-redux';
-import { getItems, getFilter } from '../redux/selectors';
+import { getFilter, getContacts } from '../redux/selectors';
 
 const ContactList = () => {
-  const contacts = useSelector(getItems);
+  const contactsState = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  const contactItems = contacts.contacts.items;
+
+  console.log('Filter: ' + filter);
+  console.log(contactsState);
 
   const filtered = () => {
-    const filterValue = filter.filter;
-    return contactItems.filter(contact =>
-      contact.name.toLowerCase().includes(filterValue.toLowerCase())
+    return contactsState.items.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 

@@ -1,12 +1,16 @@
 import style from '../phonebook/phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { setContactFilter } from '../redux/ContactSlice';
-
+import { setContactFilter } from '../redux/FilterSlice';
+import { useSelector } from 'react-redux';
+import { getFilter } from 'components/redux/selectors';
 
 const Filter = () => {
   const dispatch = useDispatch();
 
+  const filter = useSelector(getFilter);
+
   const onFilter = e => {
+    console.log(e.target.value);
     dispatch(setContactFilter(e.target.value));
   };
 
@@ -20,10 +24,10 @@ const Filter = () => {
         required
         className={style.filter_input}
         onChange={onFilter}
+        value={filter}
       />
     </div>
   );
 };
-
 
 export default Filter;

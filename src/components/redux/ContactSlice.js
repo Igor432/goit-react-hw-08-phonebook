@@ -8,8 +8,7 @@ const initialState = {
         items: [],
         isLoading: false,
         error: null,
-    },
-    filter: '',
+    }
 };
 
 const handlePending = state => {
@@ -21,7 +20,7 @@ const handleRejected = (state, action) => {
     state.error = action.payload;
 };
 
-export const itemSlice = createSlice({
+export const contactSlice = createSlice({
     name: 'contacts',
     initialState: initialState,
 
@@ -47,12 +46,6 @@ export const itemSlice = createSlice({
         },
         [deleteContact.rejected]: handleRejected,
     },
-    reducers: {
-        setContactFilter(state, action) {
-            state.filter = action.payload;
-        },
-    },
 });
 
-export const { setContactFilter } = itemSlice.actions;
-export const contactReducer = itemSlice.reducer;
+export const contactReducer = contactSlice.reducer;
