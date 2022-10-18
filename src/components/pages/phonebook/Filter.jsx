@@ -1,6 +1,6 @@
-import style from '../phonebook/phonebook.module.css';
+import style from '../phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { setContactFilter } from '../redux/FilterSlice';
+import { setContactFilter } from '../../redux/FilterSlice';
 import { useSelector } from 'react-redux';
 import { getFilter } from 'components/redux/selectors';
 

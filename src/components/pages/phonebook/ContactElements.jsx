@@ -1,6 +1,6 @@
-import { deleteContact, fetchContacts } from '../redux/operations';
+import { deleteContact, fetchContacts } from '../../redux/operations';
 import { useDispatch } from 'react-redux';
-import style from '../phonebook/phonebook.module.css';
+import style from '../phonebook.module.css';
 import PropTypes from 'prop-types';
 
 const ContactElement = ({ contact, id }) => {

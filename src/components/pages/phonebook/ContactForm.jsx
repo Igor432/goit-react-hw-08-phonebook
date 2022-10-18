@@ -1,6 +1,6 @@
-import style from '../phonebook/phonebook.module.css';
+import style from '../phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact, fetchContacts } from '../redux/operations';
+import { addContact, fetchContacts } from '../../redux/operations';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'components/redux/selectors';
 import Notiflix from 'notiflix';
