@@ -3,12 +3,13 @@ import { useSelector } from "react-redux";
 
 export const useAuth = () => {
 
-    const checkLoggedin = useSelector(isLoggedIn)
+    const checkLoggedIn = useSelector(isLoggedIn)
     const user = useSelector(selectUser)
 
-    return (
+    return {
+        checkLoggedIn,
+        user
+    }
 
-        checkLoggedin, user
-    )
 
 }
