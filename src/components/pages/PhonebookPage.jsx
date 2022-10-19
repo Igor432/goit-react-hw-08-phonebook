@@ -6,8 +6,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchContacts } from 'components/redux/operations';
 import { getLoading, getError } from 'components/redux/selectors';
+import { useState } from 'react';
+import { Menu } from './phonebook/Menu';
 
 export const Phonebook = () => {
+  const [menu, setMenu] = useState(false)
+
+const toggleMenu = () => {
+  setMenu((prev) => !prev)
+}
   const dispatch = useDispatch();
 
   const isLoading = useSelector(getLoading);
@@ -18,15 +25,16 @@ export const Phonebook = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1 className={style.title_tag}>Phonebook</h1>
-      <ContactForm />
-
-      <h2 className={style.title_tag}>Contacts</h2>
-
-      <Filter />
-      {isLoading && !Error && <b>Request is Loading...</b>}
-      <ContactList />
+    <div className={style.Phonebook}>
+      <div className={style.phonebook_form}>
+     {menu && <Menu/>}
+        <ContactForm />
+      </div>
+      <div className={style.phonebook_list}>
+        <Filter />
+        {isLoading && !Error && <b>Request is Loading...</b>}
+        <ContactList />
+      </div>
     </div>
   );
 };

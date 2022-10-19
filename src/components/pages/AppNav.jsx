@@ -12,15 +12,18 @@ import { useAuth } from 'components/redux/auth/hooks';
 import { logOut } from 'components/redux/auth/operations';
 import { useDispatch } from 'react-redux';
 
-export default function ButtonAppBar() {
-  const {checkLoggedIn} = useAuth();
 
-  const dispatch = useDispatch()
+export default function ButtonAppBar({toggleMenu}) {
+
+
+  const { checkLoggedIn } = useAuth();
+
+  const dispatch = useDispatch();
 
   const LogOutUser = () => {
-    dispatch(logOut())
-    console.log(checkLoggedIn)
-  }
+    dispatch(logOut());
+    console.log(checkLoggedIn);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -32,6 +35,7 @@ export default function ButtonAppBar() {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={toggleMenu}
           >
             <MenuIcon />
           </IconButton>

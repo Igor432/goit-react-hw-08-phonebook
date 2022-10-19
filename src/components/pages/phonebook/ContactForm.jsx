@@ -44,7 +44,9 @@ const ContactForm = () => {
 
   return (
     <div class="main_div">
+         
       <form onSubmit={onSubmit} className={style.forma}>
+      <h1 className={style.title_tag}>Phonebook</h1>
         <p class="input_tag">Name</p>
         <input
           type="text"

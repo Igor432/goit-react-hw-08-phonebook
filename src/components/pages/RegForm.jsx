@@ -17,7 +17,7 @@ function RegForm() {
   const dispatch = useDispatch();
 
   const { checkLoggedIn } = useAuth();
-  console.log(checkLoggedIn);
+ 
 
   if (checkLoggedIn) {
     return <Navigate to="/contacts" />;

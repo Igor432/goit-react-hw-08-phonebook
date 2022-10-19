@@ -18,6 +18,8 @@ const ContactList = () => {
 
   return (
     <div className={style.contacts}>
+            <h2 className={style.title_tag}>Contacts</h2>
+
       <ul className={style.contacts_list}>
         {filtered().map(contact => (
           <ContactElement contact={contact} key={contact.id} id={contact.id} />
