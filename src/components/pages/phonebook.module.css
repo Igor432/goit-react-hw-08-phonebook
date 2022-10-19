@@ -157,3 +157,19 @@
         width: 180px;
         height: 20px;
     }
+    
+    .menu_button {
+        width: 140px;
+        height: 35px;
+    }
+    
+    .menu_links {
+        color: white;
+        text-decoration: none;
+    }
+    
+    .form_box {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }

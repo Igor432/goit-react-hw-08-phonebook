@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 
@@ -15,6 +15,7 @@ const setAuthHeader = token => {
 export const Register = createAsyncThunk('async/register', async(credentials, thunkAPI) => {
     try {
         const response = await axios.post('/users/signup', credentials)
+        console.log(credentials)
         setAuthHeader(response.data.token);
         return response.data;
     } catch (error) {
@@ -33,3 +34,13 @@ export const LogIn = createAsyncThunk('async/login', async(credentials, thunkAPI
 
     }
 })
+
+export const logOut = createAsyncThunk('auth/logout', async(_, thunkAPI) => {
+    try {
+        await axios.post('/users/logout');
+        // After a successful logout, remove the token from the HTTP header
+        clearAuthHeader();
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+    }
+});
