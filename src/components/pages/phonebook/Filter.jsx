@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setContactFilter } from '../../redux/FilterSlice';
 import { useSelector } from 'react-redux';
 import { getFilter } from 'components/redux/selectors';
+import SearchIcon from '@mui/icons-material/Search';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,8 @@ const Filter = () => {
 
   return (
     <div className={style.filter}>
-      <h3>Search Contacts</h3>
+      <h3 className={style.search_tag}>Search Contacts</h3>
+      <SearchIcon/>
       <input
         type="filter"
         name="filter"

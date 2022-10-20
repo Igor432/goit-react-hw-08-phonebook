@@ -15,7 +15,6 @@ import { useDispatch } from 'react-redux';
 
 export default function ButtonAppBar({toggleMenu}) {
 
-
   const { checkLoggedIn } = useAuth();
 
   const dispatch = useDispatch();

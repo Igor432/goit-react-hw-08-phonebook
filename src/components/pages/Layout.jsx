@@ -17,7 +17,7 @@ const toggleMenu = () => {
   return (
     <div>
       <AppNav toggleMenu={toggleMenu} />
-      {menu && <Menu open={menu}/>}
+      {menu && <Menu open={menu} toggleMenu={toggleMenu} />}
       <Suspense fallback={<div>...Loading</div>}>
         <Outlet />
       </Suspense>

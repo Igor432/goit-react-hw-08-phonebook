@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { Register } from 'components/redux/auth/operations';
 import { useAuth } from 'components/redux/auth/hooks';
 import { Navigate } from 'react-router-dom';
-
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 
 function RegForm() {
   const [name, setName] = useState('');
@@ -57,6 +57,7 @@ function RegForm() {
 
   return (
     <div className={style.regForm} >
+   <AssignmentIndIcon fontSize='large' color='primary' className={style.Icon}/>
       <h3>Please, enter your credentials:</h3>
       <Box
       onSubmit={onSubmit}

@@ -6,6 +6,9 @@ import { getContacts } from 'components/redux/selectors';
 import Notiflix from 'notiflix';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -37,17 +40,26 @@ const ContactForm = () => {
       id: nanoid(),
     };
     dispatch(addContact(contact));
-    dispatch(fetchContacts())
+    dispatch(fetchContacts());
     setName('');
     setNumber('');
   };
 
   return (
     <div class="main_div">
-         
       <form onSubmit={onSubmit} className={style.forma}>
-      <h1 className={style.title_tag}>Phonebook</h1>
-        <p class="input_tag">Name</p>
+        <h1 className={style.title_tag}>
+          {' '}
+          <ContactPhoneIcon
+            fontSize="large"
+            color="dark"
+            className={style.phonebook_icon}
+          />{' '}
+          Phonebook{' '}
+        </h1>
+
+        <p class={style.input_tag}><PersonIcon/>Name:</p>
+    
         <input
           type="text"
           name="name"
@@ -58,7 +70,9 @@ const ContactForm = () => {
           onChange={onChange}
           value={name}
         />
-        <p class="input_tag">Number</p>
+        <p class={style.input_tag}><PhoneAndroidIcon className={style.input_icon}/>Number:</p>
+
+       
         <input
           type="tel"
           name="number"
@@ -67,11 +81,12 @@ const ContactForm = () => {
           required
           className={style.number_input}
           onChange={onChange}
-          value={number}
+          value={number}      
+
         />
 
         <button type="submit" className={style.submit_button}>
-          Add Contact
+          <PersonIcon/>Add Contact
         </button>
       </form>
     </div>

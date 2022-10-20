@@ -7,12 +7,14 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { LogIn } from 'components/redux/auth/operations';
+import KeyIcon from '@mui/icons-material/Key';
+
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     switch (e.target.name) {
@@ -34,13 +36,11 @@ function Login() {
       password: password,
     };
     dispatch(LogIn(loginUser));
-        setEmail('');
-        setPassword('');
+    setEmail('');
+    setPassword('');
   };
 
-
   const { checkLoggedIn } = useAuth();
-
 
   if (checkLoggedIn) {
     return <Navigate to="/contacts" />;
@@ -48,39 +48,40 @@ function Login() {
 
   return (
     <form className={style.regForm}>
-    <h3>Please, enter your credentials:</h3>
-    <Box
-      component="form"
-      sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-      className={style.form_box}
-    >
-       <TextField
-        id="outlined-email"
-        label="Email"
-        value={email}
-        name='email'
-        onChange={handleChange}
-      />
-         <TextField
-        id="outlined-email"
-        label="Password"
-        value={password}
-        name='password'
-        onChange={handleChange}
-      />
-    <Button type='submit' variant="contained" onClick={onSubmit}>Login</Button>
-
-    </Box>
+      <KeyIcon color='primary' fontSize='large' className={style.Icon}/>
+      <h3>Please, enter your credentials:</h3>
+      <Box
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off"
+        className={style.form_box}
+      >
+        <TextField
+          id="outlined-email"
+          label="Email"
+          value={email}
+          name="email"
+          onChange={handleChange}
+        />
+        <TextField
+          id="outlined-email"
+          label="Password"
+          value={password}
+          name="password"
+          onChange={handleChange}
+        />
+        <Button type="submit" variant="contained" onClick={onSubmit}>
+          Login
+        </Button>
+      </Box>
     </form>
   );
 }
 
-
-export default Login
+export default Login;
 
 /*
 export const Login = () => {

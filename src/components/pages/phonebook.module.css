@@ -1,11 +1,7 @@
 .forma {
     display: flex;
     flex-direction: column;
-    background-color: #6296c5;
     padding: 20px 50px 20px 50px;
-    position: top;
-    width: 500px;
-    justify-content: center;
     align-items: center;
 }
 
@@ -25,6 +21,7 @@
     width: 240px;
     font-size: 26px;
     border-radius: 12px;
+    text-indent: 12px;
 }
 
 .title_tag {
@@ -33,6 +30,10 @@
     text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 .name_input:focus,
@@ -49,13 +50,12 @@
 }
 
 .filter {
-    background-color: rgba(213, 213, 34, 0.594);
-    padding: 20px 50px 20px 50px;
-    width: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 40px;
 }
 
 p {
@@ -73,6 +73,8 @@ p {
     border: 0.2px;
     padding: 10px 10px 10px 10px;
     width: 200px;
+    display: flex;
+    align-items: center;
 }
 
 p {
@@ -87,8 +89,9 @@ p {
     font-size: 23px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
     height: auto;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .item_name::after {
@@ -97,8 +100,12 @@ p {
 
 .contacts {
     padding-inline-start: 0px;
-    background-color: rgba(213, 213, 34, 0.594);
     height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: rgb(0, 0, 0);
+    padding-top: 50px;
 }
 
 .delete_button {
@@ -115,8 +122,8 @@ p {
 .contacts-list {
     padding-inline-start: 0px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .appNav {
@@ -186,14 +193,23 @@ p {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    height: 100vw;
+    justify-content: space-around;
 }
 
 .Menu_open {
-    width: 360px;
+    width: 320px;
     position: absolute;
-    background-color: yellow;
+    color: whitesmoke;
+    background: #2d2f31;
     animation: slide 0.5s;
     transition: 250ms ease-in-out;
+    z-index: 1;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    opacity: 89%;
+    border-bottom-right-radius: 20%;
 }
 
 .Menu_close {
@@ -209,4 +225,63 @@ p {
     to {
         left: 0px;
     }
+}
+
+.Icon {
+    padding-top: 50px;
+}
+
+.phonebook_icon {
+    margin-right: 10px;
+}
+
+.input_icon {
+    margin-left: 10px;
+}
+
+.item_name,
+.item_number,
+.delete_button {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.table_row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+.table_cell {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    font-size: 16px;
+    border: 2.5px dashed #273426;
+    padding: 10px 13px 10px 13px;
+    border-radius: 15%;
+    flex-wrap: wrap;
+}
+
+.input_tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.menu_item {
+    display: flex;
+    text-align: center;
+    gap: 20px;
+}
+
+.search_tag {
+    display: flex;
+    text-align: center;
 }
