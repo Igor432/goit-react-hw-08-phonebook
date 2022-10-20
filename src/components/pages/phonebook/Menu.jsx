@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 export const Menu = ({ open, toggleMenu }) => {
 
 const {user} = useAuth()
+const {checkLoggedIn} = useAuth()
 const contacts = useSelector(getContacts)
 console.log(contacts)
 
@@ -28,12 +29,12 @@ const LogOutUser = () => {
     <div className={open ? style.Menu_open : style.Menu_close}>
       <p className={style.menu_item}><PersonIcon />Profile: {user.name}</p>
       <p className={style.menu_item}><EmailIcon/>Email: {user.email}</p>
-      <p className={style.menu_item}><PhoneAndroidIcon/>Total Contacts: {contacts.items.length}</p>
-      <Button color="inherit" onClick={LogOutUser}>
+      <p className={style.menu_item}><PhoneAndroidIcon/>Total Contacts: {checkLoggedIn && contacts.items.length}</p>
+      {checkLoggedIn && <Button color="inherit" onClick={LogOutUser}>
                 <NavLink to="/" className={style.menu_links}>
                   Log-Out
                 </NavLink>
-              </Button>
+              </Button>}
     </div>
   );
 };
