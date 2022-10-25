@@ -18,7 +18,7 @@ const Filter = () => {
   return (
     <div className={style.filter}>
       <h3 className={style.search_tag}>Search Contacts</h3>
-      <SearchIcon/>
+      <SearchIcon />
       <input
         type="filter"
         name="filter"

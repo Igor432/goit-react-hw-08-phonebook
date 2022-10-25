@@ -17,7 +17,6 @@ function RegForm() {
   const dispatch = useDispatch();
 
   const { checkLoggedIn } = useAuth();
- 
 
   if (checkLoggedIn) {
     return <Navigate to="/contacts" />;
@@ -56,11 +55,15 @@ function RegForm() {
   };
 
   return (
-    <div className={style.regForm} >
-   <AssignmentIndIcon fontSize='large' color='primary' className={style.Icon}/>
+    <div className={style.regForm}>
+      <AssignmentIndIcon
+        fontSize="large"
+        color="primary"
+        className={style.Icon}
+      />
       <h3>Please, enter your credentials:</h3>
       <Box
-      onSubmit={onSubmit}
+        onSubmit={onSubmit}
         component="form"
         sx={{
           '& > :not(style)': { m: 1, width: '25ch' },
@@ -90,7 +93,9 @@ function RegForm() {
           value={password}
           onChange={handleChange}
         />
-        <Button type='submit' variant="contained" onClick={onSubmit}>Register</Button>
+        <Button type="submit" variant="contained" onClick={onSubmit}>
+          Register
+        </Button>
       </Box>
     </div>
   );

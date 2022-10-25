@@ -11,10 +11,9 @@ import style from '../pages/phonebook.module.css';
 import { useAuth } from 'components/redux/auth/hooks';
 import { logOut } from 'components/redux/auth/operations';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 
-
-export default function ButtonAppBar({toggleMenu}) {
-
+export default function ButtonAppBar({ toggleMenu }) {
   const { checkLoggedIn } = useAuth();
 
   const dispatch = useDispatch();
@@ -77,33 +76,6 @@ export default function ButtonAppBar({toggleMenu}) {
   );
 }
 
-/*
-
-import style from '../pages/phonebook.module.css';
-import { NavLink } from 'react-router-dom';
-import Button from '@mui/material/Button';
-
-
-const AppNav = () => {
-  return (
-    <div className={style.appNav}>
-      <ul className={style.nav_links}>
-        <li className={style.home_link}>
-    <NavLink to='/'>Home</NavLink>
-        </li>
-        <li>
-   <NavLink to='/register'>Register</NavLink>
-        </li>
-        <li>
-     <NavLink to='/login' >Log-In</NavLink>
-
-        </li>
-      </ul>
-    </div>
-  );
+ButtonAppBar.propTypes = {
+  toggleMenu: PropTypes.func.isRequired,
 };
-
-export default AppNav;
-
-
-*/

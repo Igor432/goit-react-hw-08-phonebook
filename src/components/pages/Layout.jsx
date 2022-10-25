@@ -4,15 +4,12 @@ import AppNav from './AppNav';
 import { useState } from 'react';
 import { Menu } from './phonebook/Menu';
 
-
 const Layout = () => {
+  const [menu, setMenu] = useState(false);
 
-  const [menu, setMenu] = useState(false)
-
-const toggleMenu = () => {
-  setMenu((prev) => !prev)
-}
-
+  const toggleMenu = () => {
+    setMenu(prev => !prev);
+  };
 
   return (
     <div>

@@ -58,8 +58,11 @@ const ContactForm = () => {
           Phonebook{' '}
         </h1>
 
-        <p class={style.input_tag}><PersonIcon/>Name:</p>
-    
+        <p class={style.input_tag}>
+          <PersonIcon />
+          Name:
+        </p>
+
         <input
           type="text"
           name="name"
@@ -70,9 +73,11 @@ const ContactForm = () => {
           onChange={onChange}
           value={name}
         />
-        <p class={style.input_tag}><PhoneAndroidIcon className={style.input_icon}/>Number:</p>
+        <p class={style.input_tag}>
+          <PhoneAndroidIcon className={style.input_icon} />
+          Number:
+        </p>
 
-       
         <input
           type="tel"
           name="number"
@@ -81,12 +86,12 @@ const ContactForm = () => {
           required
           className={style.number_input}
           onChange={onChange}
-          value={number}      
-
+          value={number}
         />
 
         <button type="submit" className={style.submit_button}>
-          <PersonIcon/>Add Contact
+          <PersonIcon />
+          Add Contact
         </button>
       </form>
     </div>

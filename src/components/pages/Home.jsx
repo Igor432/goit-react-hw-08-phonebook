@@ -7,7 +7,6 @@ export const Home = () => {
 
   return (
     <div className={style.home_page}>
-      
       {checkLoggedIn ? (
         <h1>Welcome to your Contact Book, {user.name}!</h1>
       ) : (

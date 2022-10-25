@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux';
 import { LogIn } from 'components/redux/auth/operations';
 import KeyIcon from '@mui/icons-material/Key';
 
-
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -48,7 +47,7 @@ function Login() {
 
   return (
     <form className={style.regForm}>
-      <KeyIcon color='primary' fontSize='large' className={style.Icon}/>
+      <KeyIcon color="primary" fontSize="large" className={style.Icon} />
       <h3>Please, enter your credentials:</h3>
       <Box
         component="form"
