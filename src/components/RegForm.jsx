@@ -46,9 +46,10 @@ function RegForm() {
     if (email === '' || password === '' || name === '') {
       Notiflix.Notify.failure('Please, fill all the fields');
     } else {
-      dispatch(Register({ name: name, email: email, password: password }))
+      
+      dispatch(Register({ name: name, email: email, password: password }));
     }
-    dispatch(LogIn({email:email, password: password}))
+    dispatch(LogIn({ email: email, password: password }));
     setName('');
     setEmail('');
     setPassword('');
@@ -90,6 +91,8 @@ function RegForm() {
         required
         value={password}
         onChange={handleChange}
+        error={ password.length > 0 && password.length < 6 }
+        helperText={password.length > 0 && password.length < 6  ? 'It must be at least 6 symbols!' : ' '}
       />
       <Button type="submit" variant="contained" onClick={onSubmit}>
         Register

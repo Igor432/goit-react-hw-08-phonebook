@@ -14,7 +14,7 @@ import { useRef, useEffect } from 'react';
 export const Menu = ({ open, toggleMenu }) => {
   const { user } = useAuth();
   const { checkLoggedIn } = useAuth();
-  const ref = useRef()
+  const ref = useRef();
   const contacts = useSelector(getContacts);
   console.log(contacts);
 
@@ -27,25 +27,21 @@ export const Menu = ({ open, toggleMenu }) => {
 
   useOnClickOutside(ref, () => toggleMenu());
 
-
   function useOnClickOutside(ref, handler) {
-    useEffect(
-      () => {
-        const listener = (event) => {
-          if (!ref.current || ref.current.contains(event.target)) {
-            return;
-          }
-          handler(event);
-        };
-        document.addEventListener("mousedown", listener);
-        document.addEventListener("touchstart", listener);
-        return () => {
-          document.removeEventListener("mousedown", listener);
-          document.removeEventListener("touchstart", listener);
-        };
-      },
-      [ref, handler]
-    );
+    useEffect(() => {
+      const listener = event => {
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+        handler(event);
+      };
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
+      return () => {
+        document.removeEventListener('mousedown', listener);
+        document.removeEventListener('touchstart', listener);
+      };
+    }, [ref, handler]);
   }
 
   return (
@@ -63,11 +59,9 @@ export const Menu = ({ open, toggleMenu }) => {
         Total Contacts: {checkLoggedIn && contacts.items.length}
       </p>
       {checkLoggedIn && (
-     
-          <NavLink to="/" className={style.menu_links} onClick={LogOutUser}>
-            Log-Out
-          </NavLink>
-      
+        <NavLink to="/" className={style.menu_links} onClick={LogOutUser}>
+          Log-Out
+        </NavLink>
       )}
     </div>
   );

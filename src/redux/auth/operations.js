@@ -20,7 +20,6 @@ export const Register = createAsyncThunk('async/register', async(credentials, th
         setAuthHeader(response.data.token);
         return response.data;
     } catch (error) {
-        Notiflix.Notify.failure("Invalid email or password");
         return thunkAPI.rejectWithValue(error.message);
     }
 
