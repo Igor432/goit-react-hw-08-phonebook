@@ -1,3 +1,4 @@
+import { Email } from '@mui/icons-material';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import Notiflix from 'notiflix';
@@ -19,12 +20,15 @@ export const Register = createAsyncThunk('async/register', async(credentials, th
         console.log(credentials)
         setAuthHeader(response.data.token);
         Notiflix.Notify.success("You have successfully registered! Please, log-in now!");
+
+
         return response.data;
     } catch (error) {
         Notiflix.Notify.failure("You email or password is wrong, please try again");
         return thunkAPI.rejectWithValue(error.message);
-
     }
+
+
 })
 
 export const LogIn = createAsyncThunk('async/login', async(credentials, thunkAPI) => {
