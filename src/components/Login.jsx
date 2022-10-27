@@ -70,6 +70,7 @@ function Login() {
         value={password}
         name="password"
         onChange={handleChange}
+        placeholder='min 6 symbols'
       />
       <Button type="submit" variant="contained" onClick={onSubmit}>
         Login
