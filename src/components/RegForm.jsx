@@ -4,10 +4,12 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Register } from 'components/redux/auth/operations';
-import { useAuth } from 'components/redux/auth/hooks';
+import { Register } from '../redux/auth/operations';
+import { useAuth } from '../redux/auth/hooks';
 import { Navigate } from 'react-router-dom';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import Notiflix from 'notiflix';
+
 
 function RegForm() {
   const [name, setName] = useState('');
@@ -21,6 +23,7 @@ function RegForm() {
   if (checkLoggedIn) {
     return <Navigate to="/contacts" />;
   }
+
 
   const handleChange = e => {
     switch (e.target.name) {
@@ -43,19 +46,23 @@ function RegForm() {
 
   const onSubmit = e => {
     e.preventDefault();
-    const newUser = {
-      name: name,
-      email: email,
-      password: password,
+    if (email === '' || password === '' || name === '') {
+      Notiflix.Notify.failure('Please, fill all the fields');
+    } else {
+   
+    dispatch(Register({name: name, email:email, password:password}));
+  
     };
-    dispatch(Register(newUser));
     setName('');
     setEmail('');
     setPassword('');
-  };
+  }
 
+
+  
+  
   return (
-    <div className={style.regForm}>
+    <form className={style.regForm} onSubmit={onSubmit}>
       <AssignmentIndIcon
         fontSize="large"
         color="primary"
@@ -68,7 +75,7 @@ function RegForm() {
         sx={{
           '& > :not(style)': { m: 1, width: '25ch' },
         }}
-        noValidate
+        validate='true'
         autoComplete="off"
         className={style.form_box}
       >
@@ -76,6 +83,8 @@ function RegForm() {
           id="outlined-name"
           name="name"
           label="Name"
+          pattern="[a-z]{4,8}"
+          required
           value={name}
           onChange={handleChange}
         />
@@ -83,13 +92,18 @@ function RegForm() {
           id="outlined-email"
           name="email"
           label="Email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          required
           value={email}
           onChange={handleChange}
         />
         <TextField
-          id="outlined-email"
+          type="password"
+          id="outlined-password"
           name="password"
           label="Password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          required
           value={password}
           onChange={handleChange}
         />
@@ -97,7 +111,7 @@ function RegForm() {
           Register
         </Button>
       </Box>
-    </div>
+    </form>
   );
 }
 

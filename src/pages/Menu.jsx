@@ -1,19 +1,20 @@
-import style from './../phonebook.module.css';
-import { useAuth } from 'components/redux/auth/hooks';
-import { getContacts } from 'components/redux/selectors';
+import style from '../components/phonebook.module.css';
+import { useAuth } from 'redux/auth/hooks';
+import { getContacts } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 import PersonIcon from '@mui/icons-material/Person';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import EmailIcon from '@mui/icons-material/Email';
-import Button from '@mui/material/Button';
-import { logOut } from 'components/redux/auth/operations';
+import { logOut } from 'redux/auth/operations';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useRef, useEffect } from 'react';
 
 export const Menu = ({ open, toggleMenu }) => {
   const { user } = useAuth();
   const { checkLoggedIn } = useAuth();
+  const ref = useRef()
   const contacts = useSelector(getContacts);
   console.log(contacts);
 
@@ -24,8 +25,31 @@ export const Menu = ({ open, toggleMenu }) => {
     toggleMenu();
   };
 
+  useOnClickOutside(ref, () => toggleMenu());
+
+
+  function useOnClickOutside(ref, handler) {
+    useEffect(
+      () => {
+        const listener = (event) => {
+          if (!ref.current || ref.current.contains(event.target)) {
+            return;
+          }
+          handler(event);
+        };
+        document.addEventListener("mousedown", listener);
+        document.addEventListener("touchstart", listener);
+        return () => {
+          document.removeEventListener("mousedown", listener);
+          document.removeEventListener("touchstart", listener);
+        };
+      },
+      [ref, handler]
+    );
+  }
+
   return (
-    <div className={open ? style.Menu_open : style.Menu_close}>
+    <div ref={ref} className={open ? style.Menu_open : style.Menu_close}>
       <p className={style.menu_item}>
         <PersonIcon />
         Profile: {user.name}
@@ -39,11 +63,11 @@ export const Menu = ({ open, toggleMenu }) => {
         Total Contacts: {checkLoggedIn && contacts.items.length}
       </p>
       {checkLoggedIn && (
-        <Button color="inherit" onClick={LogOutUser}>
+     
           <NavLink to="/" className={style.menu_links}>
             Log-Out
           </NavLink>
-        </Button>
+      
       )}
     </div>
   );

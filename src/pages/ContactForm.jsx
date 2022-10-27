@@ -1,8 +1,8 @@
-import style from '../phonebook.module.css';
+import style from '../components/phonebook.module.css'
 import { useDispatch } from 'react-redux';
-import { addContact, fetchContacts } from '../../redux/operations';
+import { addContact } from '../redux/operations';
 import { useSelector } from 'react-redux';
-import { getContacts } from 'components/redux/selectors';
+import { getContacts } from 'redux/selectors';
 import Notiflix from 'notiflix';
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
@@ -40,7 +40,6 @@ const ContactForm = () => {
       id: nanoid(),
     };
     dispatch(addContact(contact));
-    dispatch(fetchContacts());
     setName('');
     setNumber('');
   };

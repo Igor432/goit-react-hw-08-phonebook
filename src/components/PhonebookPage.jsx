@@ -1,11 +1,11 @@
-import ContactForm from './phonebook/ContactForm';
+import ContactForm from '../pages/ContactForm';
 import style from './phonebook.module.css';
-import Filter from './phonebook/Filter';
-import ContactList from './phonebook/ContactList';
+import Filter from '../pages/Filter';
+import ContactList from '../pages/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchContacts } from 'components/redux/operations';
-import { getLoading, getError } from 'components/redux/selectors';
+import { fetchContacts } from 'redux/operations';
+import { getLoading, getError } from 'redux/selectors';
 import { Spinner } from './Spinner';
 
 export const Phonebook = () => {

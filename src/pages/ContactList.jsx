@@ -1,6 +1,6 @@
 import ContactElement from './ContactElements';
-import style from '../phonebook.module.css';
-import { getFilter, getContacts } from '../../redux/selectors';
+import style from '../components/phonebook.module.css'
+import { getFilter, getContacts } from '../redux/selectors';
 import { useSelector } from 'react-redux';
 
 const ContactList = () => {

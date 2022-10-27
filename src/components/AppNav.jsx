@@ -3,13 +3,12 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
-import style from '../pages/phonebook.module.css';
-import { useAuth } from 'components/redux/auth/hooks';
-import { logOut } from 'components/redux/auth/operations';
+import style from './phonebook.module.css';
+import { useAuth } from 'redux/auth/hooks';
+import { logOut } from 'redux/auth/operations';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -44,30 +43,24 @@ export default function ButtonAppBar({ toggleMenu }) {
           </Typography>
 
           {checkLoggedIn ? (
-            <ul>
-              <Button color="inherit">
-                <NavLink to="/contacts" className={style.menu_links}>
-                  Contacts
-                </NavLink>
-              </Button>
-              <Button color="inherit" onClick={LogOutUser}>
-                <NavLink to="/" className={style.menu_links}>
-                  Log-Out
-                </NavLink>
-              </Button>
-            </ul>
+            <ul className={style.link_list}>
+              <NavLink to="/contacts" className={style.menu_links}>
+                Contacts
+              </NavLink>
+
+              <NavLink to="/" className={style.menu_links} onClick={LogOutUser}>
+                Log-Out
+              </NavLink>
+            </ul >
           ) : (
-            <ul>
-              <Button color="inherit">
-                <NavLink to="/register" className={style.menu_links}>
-                  Register
-                </NavLink>
-              </Button>
-              <Button color="inherit">
-                <NavLink to="/login" className={style.menu_links}>
-                  Log-In
-                </NavLink>
-              </Button>
+            <ul className={style.link_list}>
+              <NavLink to="/register" className={style.menu_links}>
+                Register
+              </NavLink>
+
+              <NavLink to="/login" className={style.menu_links}>
+                Log-In
+              </NavLink>
             </ul>
           )}
         </Toolbar>

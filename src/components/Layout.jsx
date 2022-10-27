@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import AppNav from './AppNav';
 import { useState } from 'react';
-import { Menu } from './phonebook/Menu';
+import { Menu } from '../pages/Menu';
 
 const Layout = () => {
   const [menu, setMenu] = useState(false);

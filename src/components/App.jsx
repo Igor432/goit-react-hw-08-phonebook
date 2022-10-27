@@ -1,22 +1,17 @@
-import style from './pages/phonebook.module.css';
+import style from './phonebook.module.css';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './pages/Layout';
-import { Home } from './pages/Home';
-import  RegForm  from './pages/RegForm';
-import  Login  from './pages/Login';
+import Layout from './Layout';
+import { Home } from './Home';
+import  RegForm  from './RegForm';
+import  Login  from './Login';
 import { useEffect } from 'react';
-import { Phonebook } from './pages/PhonebookPage';
+import { Phonebook } from './PhonebookPage';
 import { useDispatch } from 'react-redux';
-import { useAuth } from 'components/redux/auth/hooks';
-import { refreshUser } from 'components/redux/auth/operations';
+import { useAuth } from 'redux/auth/hooks';
+import { refreshUser } from 'redux/auth/operations';
 
 export function App() {
 const dispatch = useDispatch()
-
-
-
-
-
 
   const { isRefreshing } = useAuth();
 

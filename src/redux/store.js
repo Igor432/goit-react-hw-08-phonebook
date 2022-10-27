@@ -31,6 +31,7 @@ export const store = configureStore({
         filter: filterReducer,
         auth: persistReducer(authPersistConfig, authReducer)
     },
+    enhancer,
     middleware(getDefaultMiddleWare) {
         return getDefaultMiddleWare({
             serializableCheck: {
@@ -38,7 +39,7 @@ export const store = configureStore({
             },
         });
     },
-    enhancer,
+
 
     devTools: process.env.NODE_ENV === 'development',
 });

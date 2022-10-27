@@ -193,7 +193,6 @@ p {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100vw;
     justify-content: space-around;
 }
 
@@ -284,4 +283,9 @@ p {
 .search_tag {
     display: flex;
     text-align: center;
+}
+
+.link_list {
+    display: flex;
+    gap: 20px;
 }

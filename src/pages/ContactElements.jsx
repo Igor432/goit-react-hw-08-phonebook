@@ -1,6 +1,6 @@
-import { deleteContact, fetchContacts } from '../../redux/operations';
+import { deleteContact } from '../redux/operations';
 import { useDispatch } from 'react-redux';
-import style from '../phonebook.module.css';
+import style from '../components/phonebook.module.css';
 import PropTypes from 'prop-types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';
@@ -10,7 +10,6 @@ const ContactElement = ({ contact, id }) => {
 
   const onDelete = () => {
     dispatch(deleteContact(id));
-    dispatch(fetchContacts());
   };
 
   return (

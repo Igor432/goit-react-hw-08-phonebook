@@ -1,13 +1,13 @@
 import style from './phonebook.module.css';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from 'components/redux/auth/hooks';
-import Box from '@mui/material/Box';
+import { useAuth } from 'redux/auth/hooks';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
-import { LogIn } from 'components/redux/auth/operations';
+import { LogIn } from 'redux/auth/operations';
 import KeyIcon from '@mui/icons-material/Key';
+import Notiflix from 'notiflix';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -30,13 +30,15 @@ function Login() {
 
   const onSubmit = e => {
     e.preventDefault();
-    const loginUser = {
-      email: email,
-      password: password,
-    };
-    dispatch(LogIn(loginUser));
-    setEmail('');
-    setPassword('');
+ 
+
+    if (email === '' || password === '') {
+      Notiflix.Notify.failure('Please, fill all the fields');
+    } else {
+      dispatch(LogIn({email: email, password: password}));
+      setEmail('');
+      setPassword('');
+    }
   };
 
   const { checkLoggedIn } = useAuth();
@@ -46,36 +48,32 @@ function Login() {
   }
 
   return (
-    <form className={style.regForm}>
+    <form className={style.regForm} onSubmit={onSubmit}>
       <KeyIcon color="primary" fontSize="large" className={style.Icon} />
       <h3>Please, enter your credentials:</h3>
-      <Box
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-        className={style.form_box}
-      >
-        <TextField
-          id="outlined-email"
-          label="Email"
-          value={email}
-          name="email"
-          onChange={handleChange}
-        />
-        <TextField
-          id="outlined-email"
-          label="Password"
-          value={password}
-          name="password"
-          onChange={handleChange}
-        />
-        <Button type="submit" variant="contained" onClick={onSubmit}>
-          Login
-        </Button>
-      </Box>
+      <TextField
+        type="email"
+        id="outlined-email"
+        label="Email"
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        required
+        value={email}
+        name="email"
+        onChange={handleChange}
+      />
+      <TextField
+        type="password"
+        id="password"
+        label="Password"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        required
+        value={password}
+        name="password"
+        onChange={handleChange}
+      />
+      <Button type="submit" variant="contained" onClick={onSubmit}>
+        Login
+      </Button>
     </form>
   );
 }
