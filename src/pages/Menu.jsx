@@ -64,7 +64,7 @@ export const Menu = ({ open, toggleMenu }) => {
       </p>
       {checkLoggedIn && (
      
-          <NavLink to="/" className={style.menu_links}>
+          <NavLink to="/" className={style.menu_links} onClick={LogOutUser}>
             Log-Out
           </NavLink>
       
