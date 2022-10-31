@@ -82,6 +82,12 @@ function RegForm() {
         required
         value={email}
         onChange={handleChange}
+        error={ email.length > 0 && !email.includes('@') }
+        helperText={ email.length > 0 &&
+          !email.includes('@')
+            ? 'It must have @ symbol!'
+            : ''
+        }
       />
       <TextField
         type="password"
