@@ -1,5 +1,5 @@
-import style from './phonebook.module.css';
-import { useAuth } from '../redux/auth/hooks';
+import style from '../Home/Home.module.css';
+import { useAuth } from '../../redux/auth/hooks';
 
 export const Home = () => {
   const { checkLoggedIn, user } = useAuth();

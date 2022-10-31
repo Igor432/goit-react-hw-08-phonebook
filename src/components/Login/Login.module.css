@@ -1,0 +1,12 @@
+.regForm {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Icon {
+    padding-top: 50px;
+}

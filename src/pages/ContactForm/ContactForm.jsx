@@ -1,6 +1,6 @@
-import style from '../components/phonebook.module.css'
+import style from '../ContactForm/ContactForm.module.css'
 import { useDispatch } from 'react-redux';
-import { addContact } from '../redux/operations';
+import { addContact } from '../../redux/operations';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import Notiflix from 'notiflix';
@@ -45,7 +45,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div class="main_div">
+    <div >
       <form onSubmit={onSubmit} className={style.forma}>
         <h1 className={style.title_tag}>
           {' '}

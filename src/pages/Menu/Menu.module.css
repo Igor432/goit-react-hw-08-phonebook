@@ -1,0 +1,41 @@
+.Menu_open {
+    width: 320px;
+    position: absolute;
+    color: whitesmoke;
+    background: #2d2f31;
+    animation: slide 0.5s;
+    transition: 250ms ease-in-out;
+    z-index: 1;
+    padding-left: 30px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    opacity: 89%;
+    border-bottom-right-radius: 20%;
+}
+
+.Menu_close {
+    width: 360px;
+    left: -360px;
+    position: absolute;
+}
+
+@keyframes slide {
+    from {
+        left: -360px;
+    }
+    to {
+        left: 0px;
+    }
+}
+
+.menu_item {
+    display: flex;
+    text-align: center;
+    gap: 20px;
+}
+
+.menu_links {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+}

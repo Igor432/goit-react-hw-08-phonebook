@@ -1,4 +1,4 @@
-import style from '../components/phonebook.module.css';
+import style from '../Menu/Menu.module.css';
 import { useAuth } from 'redux/auth/hooks';
 import { getContacts } from 'redux/selectors';
 import { useSelector } from 'react-redux';

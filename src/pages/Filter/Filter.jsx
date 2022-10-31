@@ -1,8 +1,8 @@
-import style from '../components/phonebook.module.css';
+import style from '../Filter/Filter.module.css';
 import { useDispatch } from 'react-redux';
-import { setContactFilter } from '../redux/FilterSlice';
+import { setContactFilter } from '../../redux/FilterSlice';
 import { useSelector } from 'react-redux';
-import { getFilter } from '../redux/selectors';
+import { getFilter } from '../../redux/selectors';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Filter = () => {

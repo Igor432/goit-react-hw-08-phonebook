@@ -1,0 +1,26 @@
+.regForm {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    margin-bottom: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Icon {
+    padding-top: 50px;
+}
+
+.regForm button {
+    width: 120px;
+}
+
+.regForm label {
+    display: flex;
+    flex-direction: column;
+}
+
+.regForm input {
+    width: 180px;
+    height: 20px;
+}

@@ -1,6 +1,6 @@
-import { deleteContact } from '../redux/operations';
+import { deleteContact } from '../../redux/operations';
 import { useDispatch } from 'react-redux';
-import style from '../components/phonebook.module.css';
+import style from '../ContactElements/ContactElements.module.css'
 import PropTypes from 'prop-types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from '@mui/material/Button';

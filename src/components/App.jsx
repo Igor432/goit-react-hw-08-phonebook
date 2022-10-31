@@ -1,11 +1,11 @@
-import style from './phonebook.module.css';
+import style from './main.module.css';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
-import { Home } from './Home';
-import  RegForm  from './RegForm';
-import  Login  from './Login';
+import { Home } from './Home/Home';
+import  RegForm  from './RegForm/RegForm';
+import  Login  from './Login/Login';
 import { useEffect } from 'react';
-import { Phonebook } from './PhonebookPage';
+import { Phonebook } from './PhoneBook/PhonebookPage';
 import { useDispatch } from 'react-redux';
 import { useAuth } from 'redux/auth/hooks';
 import { refreshUser } from 'redux/auth/operations';
@@ -26,7 +26,7 @@ return isRefreshing ? (
     <div className={style.main}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index path='/home' element={<Home />} />
           <Route path="/register" element={<RegForm />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/contacts" element={<Phonebook />}></Route>

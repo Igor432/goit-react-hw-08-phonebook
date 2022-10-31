@@ -1,10 +1,10 @@
-import style from './phonebook.module.css';
+import style from '../RegForm/RegForm.module.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { LogIn, Register } from '../redux/auth/operations';
-import { useAuth } from '../redux/auth/hooks';
+import { LogIn, Register } from '../../redux/auth/operations';
+import { useAuth } from '../../redux/auth/hooks';
 import { Navigate } from 'react-router-dom';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import Notiflix from 'notiflix';
@@ -46,10 +46,11 @@ function RegForm() {
     if (email === '' || password === '' || name === '') {
       Notiflix.Notify.failure('Please, fill all the fields');
     } else {
-      
-      dispatch(Register({ name: name, email: email, password: password }));
+      dispatch(Register({ name: name, email: email, password: password })).then(
+        dispatch(LogIn({ email: email, password: password }))
+      );
     }
-    dispatch(LogIn({ email: email, password: password }));
+
     setName('');
     setEmail('');
     setPassword('');
@@ -91,8 +92,12 @@ function RegForm() {
         required
         value={password}
         onChange={handleChange}
-        error={ password.length > 0 && password.length < 6 }
-        helperText={password.length > 0 && password.length < 6  ? 'It must be at least 6 symbols!' : ' '}
+        error={password.length > 0 && password.length < 6}
+        helperText={
+          password.length > 0 && password.length < 6
+            ? 'It must be at least 6 symbols!'
+            : ' '
+        }
       />
       <Button type="submit" variant="contained" onClick={onSubmit}>
         Register

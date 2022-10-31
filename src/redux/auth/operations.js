@@ -33,6 +33,7 @@ export const LogIn = createAsyncThunk('async/login', async(credentials, thunkAPI
         return response.data;
     } catch (error) {
         Notiflix.Notify.failure("Invalid email or password");
+        console.log(error)
         return thunkAPI.rejectWithValue(error.message);
 
     }

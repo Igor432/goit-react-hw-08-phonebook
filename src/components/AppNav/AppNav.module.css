@@ -1,0 +1,15 @@
+.menu_links {
+    color: white;
+    text-decoration: none;
+    padding: 10px 5px 10px 5px;
+    border-radius: 4px;
+}
+
+.link_list {
+    display: flex;
+    gap: 20px;
+}
+
+.menu_links:active {
+    color: yellow;
+}
