@@ -41,14 +41,16 @@ function RegForm() {
     }
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (email === '' || password === '' || name === '') {
       Notiflix.Notify.failure('Please, fill all the fields');
     } else {
-      dispatch(Register({ name: name, email: email, password: password })).then(
-        dispatch(LogIn({ email: email, password: password }))
-      );
+      await dispatch(
+        Register({ name: name, email: email, password: password })
+      )
+
+      dispatch(LogIn({ email: email, password: password }));
     }
 
     setName('');
@@ -82,9 +84,9 @@ function RegForm() {
         required
         value={email}
         onChange={handleChange}
-        error={ email.length > 0 && !email.includes('@') }
-        helperText={ email.length > 0 &&
-          !email.includes('@')
+        error={email.length > 0 && !email.includes('@')}
+        helperText={
+          email.length > 0 && !email.includes('@')
             ? 'It must have @ symbol!'
             : ''
         }
