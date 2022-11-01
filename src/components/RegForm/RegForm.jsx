@@ -48,9 +48,9 @@ function RegForm() {
     } else {
       await dispatch(
         Register({ name: name, email: email, password: password })
+      ).then(dispatch(LogIn({ email: email, password: password }))
       )
 
-      dispatch(LogIn({ email: email, password: password }));
     }
 
     setName('');
